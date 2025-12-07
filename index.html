@@ -309,6 +309,51 @@ footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center;paddi
   }
   window.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
   window.renderProjects = renderProjects;
+
+  <script>
+  // Theme toggle: persist to localStorage
+  (function(){
+    const html = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const icon = document.getElementById('themeIcon');
+
+    // apply saved theme or system preference
+    const saved = localStorage.getItem('ccrn-theme');
+    if(saved === 'dark') html.classList.add('dark-mode');
+    else if(saved === 'light') html.classList.remove('dark-mode');
+    else {
+      // no saved choice: use system
+      if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+        html.classList.add('dark-mode');
+      }
+    }
+
+    function updateIcon(){
+      if(html.classList.contains('dark-mode')){
+        // moon icon (white)
+        icon.innerHTML = '<path d=\"M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z\" fill=\"currentColor\"/>';
+      } else {
+        // sun outline
+        icon.innerHTML = '<path d=\"M6.76 4.84l-1.8-1.79M1 12h2M22 12h2M17.24 4.84l1.8-1.79M12 1v2M12 21v2M6.76 19.16l-1.8 1.79M17.24 19.16l1.8 1.79\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"12\" cy=\"12\" r=\"3.2\" stroke=\"currentColor\" stroke-width=\"1.6\"/>';
+      }
+    }
+
+    updateIcon();
+
+    toggle.addEventListener('click', ()=>{
+      html.classList.toggle('dark-mode');
+      const isDark = html.classList.contains('dark-mode');
+      localStorage.setItem('ccrn-theme', isDark ? 'dark' : 'light');
+      updateIcon();
+    });
+
+    // make sure animation container is not hidden by CSS inline or removed
+    const anim = document.querySelector('.anim-area');
+    if(anim){
+      anim.style.display = anim.style.display || ''; // do not force hide
+    }
+  })();
+</script>
 </script>
 </body>
   </html>
