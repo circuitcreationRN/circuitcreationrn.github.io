@@ -11,69 +11,91 @@
   <meta name="description" content="Circuit Creation RN — projects template for Arduino, circuit diagrams, downloadable docs and video links." />
   <style>
     :root{
-      --bg:#ffffff; --text:#111111; --accent:#00bcd4; --muted:#666;
-      --card:#fafafa; --shadow:0 10px 30px rgba(17,17,17,0.06);
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Poppins,system-ui,Arial;color:var(--text);background:var(--bg)}
-    .wrap{max-width:1100px;margin:28px auto;padding:20px}
-    header{display:flex;align-items:center;gap:14px}
-    .logo{width:64px;height:64px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#76e8d6);display:grid;place-items:center;font-family:Orbitron;color:#012;font-weight:800;overflow:hidden}
-    .logo img { width:100%; height:100%; object-fit:contain; border-radius:8px; }
-    h1{margin:0;font-family:Orbitron;font-size:28px}
-    nav{margin-left:auto;display:flex;gap:10px}
-    nav button{border:0;background:transparent;padding:8px 12px;cursor:pointer;font-weight:600}
-    .hero{display:flex;gap:18px;margin-top:18px;align-items:center}
-    .hero-left{flex:1}
-    .hero-desc{color:var(--muted);margin-top:8px}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--text);font-weight:700;text-decoration:none;cursor:pointer}
-    .btn.primary{background:var(--accent);color:#012}
+  /* Light theme (default) */
+  --bg: #ffffff;
+  --text: #111111;
+  --accent: #00bcd4;
+  --muted: #666666;
+  --card: #fafafa;
+  --shadow: 0 10px 30px rgba(17,17,17,0.06);
+}
 
-    /* Projects grid */
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:20px}
-    .card{background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow);transition:transform .25s}
-    .card:hover{transform:translateY(-6px)}
-    .card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
-    .card h4{margin:10px 0 6px 0}
-    .meta{color:var(--muted);font-size:13px}
-    .card .actions{display:flex;gap:8px;margin-top:8px}
+/* Dark theme variables (applied when .dark-mode on <html>) */
+html.dark-mode {
+  --bg: #0b0d0f;
+  --text: #e6eef2;
+  --accent: #2bd1d8;
+  --muted: #9aa6ad;
+  --card: #0f1416;
+  --shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
 
-    /* Modal */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,0.45)}
-    .modal.open{display:flex}
-    .panel{width:100%;max-width:1000px;background:white;border-radius:12px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:auto;max-height:90vh}
-    .panel .top{display:flex;gap:12px;align-items:center}
-    .panel img{width:340px;height:220px;object-fit:cover;border-radius:8px}
-    pre{background:#0f1720;color:#cfeef7;padding:12px;border-radius:8px;overflow:auto}
-    .copy-btn{padding:8px 10px;border-radius:8px;border:0;background:var(--accent);color:#012;font-weight:700;cursor:pointer}
-    .download-btn{padding:8px 10px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--text);cursor:pointer}
+*{box-sizing:border-box}
+body{margin:0;font-family:Poppins,system-ui,Arial;color:var(--text);background:var(--bg);transition:background .25s,color .25s}
+.wrap{max-width:1100px;margin:28px auto;padding:20px}
+header{display:flex;align-items:center;gap:14px}
+.logo{width:64px;height:64px;border-radius:10px;background:transparent;display:grid;place-items:center;overflow:hidden}
+.logo img { width:100%; height:100%; object-fit:contain; display:block; }
+h1{margin:0;font-family:Orbitron;font-size:28px;color:var(--text)}
+nav{margin-left:auto;display:flex;gap:10px;align-items:center}
+nav button{border:0;background:transparent;padding:8px 12px;cursor:pointer;font-weight:600;color:var(--text)}
+.theme-toggle{width:42px;height:36px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;display:grid;place-items:center;cursor:pointer}
+.theme-toggle svg{width:18px;height:18px;display:block;}
 
-    /* Footer */
-    footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center;padding:18px}
+/* Hero / content */
+.hero{display:flex;gap:18px;margin-top:18px;align-items:center}
+.hero-left{flex:1}
+.hero-desc{color:var(--muted);margin-top:8px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--text);font-weight:700;text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--accent);color:#012}
 
-    /* Flying robotics animation area */
-    .anim-area{position:fixed;left:0;right:0;top:0;height:220px;pointer-events:none;overflow:visible;z-index:0}
-    .flying{position:absolute;will-change:transform;opacity:0.95}
-    /* different sizes & speeds */
-    .part {width:48px; height:48px;}
-    .part.small {width:28px;height:28px;opacity:0.9}
-    .part.medium {width:44px;height:44px}
-    .part.large {width:68px;height:68px}
-    /* keyframes for free-flying paths */
-    @keyframes floatA {0%{transform:translate(-10vw,20vh) rotate(0deg)}50%{transform:translate(60vw,40vh) rotate(180deg)}100%{transform:translate(-10vw,60vh) rotate(360deg)}}
-    @keyframes floatB {0%{transform:translate(110vw,10vh) rotate(0deg)}50%{transform:translate(30vw,50vh) rotate(-180deg)}100%{transform:translate(110vw,90vh) rotate(-360deg)}}
-    @keyframes floatC {0%{transform:translate(50vw,-10vh) rotate(0deg)}50%{transform:translate(10vw,60vh) rotate(200deg)}100%{transform:translate(90vw,110vh) rotate(400deg)}}
+/* Projects grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:20px}
+.card{background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow);transition:transform .25s}
+.card:hover{transform:translateY(-6px)}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+.card h4{margin:10px 0 6px 0}
+.meta{color:var(--muted);font-size:13px}
+.card .actions{display:flex;gap:8px;margin-top:8px}
 
-    /* responsive tweaks */
-    @media (max-width:700px){ .hero{flex-direction:column} .panel img{width:100%;height:180px} .anim-area{display:none} }
+/* Modal */
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,0.45)}
+.modal.open{display:flex}
+.panel{width:100%;max-width:1000px;background:var(--bg);border-radius:12px;padding:16px;box-shadow:0 20px 60px rgba(0,0,0,0.4);overflow:auto;max-height:90vh}
+.panel .top{display:flex;gap:12px;align-items:center}
+.panel img{width:340px;height:220px;object-fit:cover;border-radius:8px}
+pre{background:#081017;color:#bfeef7;padding:12px;border-radius:8px;overflow:auto}
+.copy-btn{padding:8px 10px;border-radius:8px;border:0;background:var(--accent);color:#012;font-weight:700;cursor:pointer}
+.download-btn{padding:8px 10px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--text);cursor:pointer}
 
-    /* little fade-in */
-    .fade-up{opacity:0;transform:translateY(8px);animation:fadeup .6s forwards}
-    @keyframes fadeup{to{opacity:1;transform:none}}
-    /* social icons */
-    .socials{display:flex;gap:8px;margin-top:12px}
-    .socials a{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);text-decoration:none}
-    .socials svg{width:22px;height:22px}
+/* Footer */
+footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center;padding:18px}
+
+/* Flying robotics animation area */
+.anim-area{position:fixed;left:0;right:0;top:0;height:220px;pointer-events:none;overflow:visible;z-index:0}
+.flying{position:absolute;will-change:transform;opacity:0.95}
+/* different sizes & speeds */
+.part {width:48px; height:48px;}
+.part.small {width:28px;height:28px;opacity:0.9}
+.part.medium {width:44px;height:44px}
+.part.large {width:68px;height:68px}
+/* keyframes for free-flying paths */
+@keyframes floatA {0%{transform:translate(-10vw,20vh) rotate(0deg)}50%{transform:translate(60vw,40vh) rotate(180deg)}100%{transform:translate(-10vw,60vh) rotate(360deg)}}
+@keyframes floatB {0%{transform:translate(110vw,10vh) rotate(0deg)}50%{transform:translate(30vw,50vh) rotate(-180deg)}100%{transform:translate(110vw,90vh) rotate(-360deg)}}
+@keyframes floatC {0%{transform:translate(50vw,-10vh) rotate(0deg)}50%{transform:translate(10vw,60vh) rotate(200deg)}100%{transform:translate(90vw,110vh) rotate(400deg)}}
+
+/* responsive tweaks */
+@media (max-width:700px){ .hero{flex-direction:column} .panel img{width:100%;height:180px} }
+/* hide animation only on extremely tiny screens to keep performance */
+@media (max-width:360px){ .anim-area{display:none} }
+
+/* little fade-in */
+.fade-up{opacity:0;transform:translateY(8px);animation:fadeup .6s forwards}
+@keyframes fadeup{to{opacity:1;transform:none}}
+/* social icons */
+.socials{display:flex;gap:8px;margin-top:12px}
+.socials a{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);text-decoration:none}
+.socials svg{width:22px;height:22px}
   </style>
 </head>
 <body>
