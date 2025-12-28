@@ -31,7 +31,7 @@ html.dark-mode {
 }
 
 *{box-sizing:border-box}
-body{margin:0;font-family:Poppins,system-ui,Arial;color:var(--text);background:var(--bg);transition:background .25s,color .25s}
+body{margin:0;font-family:Poppins,system-ui,Arial;color:var(--text);background:var(--bg);
 .wrap{max-width:1100px;margin:28px auto;padding:20px}
 header{display:flex;align-items:center;gap:14px}
 .logo{width:64px;height:64px;border-radius:10px;background:transparent;display:grid;place-items:center;overflow:hidden}
@@ -87,7 +87,10 @@ footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center;paddi
 /* responsive tweaks */
 @media (max-width:700px){ .hero{flex-direction:column} .panel img{width:100%;height:180px} }
 /* hide animation only on extremely tiny screens to keep performance */
-@media (max-width:360px){ .anim-area{display:none} }
+@media (max-width:360px){ .anim-area{
+  display:block;
+  opacity:0.35;
+} }
 
 /* little fade-in */
 .fade-up{opacity:0;transform:translateY(8px);animation:fadeup .6s forwards}
@@ -98,6 +101,18 @@ footer{margin-top:28px;color:var(--muted);font-size:14px;text-align:center;paddi
 .socials svg{width:22px;height:22px}
   </style>
 </head>
+
+  header,
+footer{
+  background: transparent;
+  color: var(--text);
+}
+
+.card{
+  background: var(--card);
+  color: var(--text);
+}
+
 <body>
   <!-- Animated robotics area (SVG icons flying) -->
   <div class="anim-area" aria-hidden>
