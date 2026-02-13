@@ -12,6 +12,31 @@
 
 <style>
 
+
+
+ /* ===== BUTTON GLOW EFFECT ===== */
+
+.btn:hover{
+  box-shadow:0 0 15px cyan, 0 0 40px cyan;
+  transform:scale(1.05);
+  transition:0.3s;
+}
+
+
+ /* ===== SCROLL FADE ANIMATION ===== */
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+ 
+
 /* ===== DARK THEME ===== */
 
 body{
