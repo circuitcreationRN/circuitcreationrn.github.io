@@ -1,115 +1,174 @@
- <!doctype html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Circuit Creation RN</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/logo.png">
 
-<meta name="description" content="Circuit Creation RN official website"/>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-/* ===== PERMANENT DARK THEME ===== */
-:root{
-  --bg:#0b0d0f;
-  --text:#e6eef2;
-  --accent:#2bd1d8;
-  --muted:#9aa6ad;
-  --card:#0f1416;
-  --shadow:0 10px 30px rgba(0,0,0,0.6);
-}
 
-*{box-sizing:border-box}
+/* ===== DARK THEME ===== */
 
 body{
   margin:0;
-  font-family:Poppins,system-ui,Arial;
-  background:var(--bg);
-  color:var(--text);
+  font-family:Poppins;
+  background:black;
+  color:white;
+  overflow-x:hidden;
 }
 
-.wrap{max-width:1100px;margin:28px auto;padding:20px}
+/* ===== FLOATING SVG BACKGROUND ===== */
+
+.bg-animation{
+  position:fixed;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+}
+
+/* Each flying Arduino image */
+
+.bg-animation img{
+  position:absolute;
+  width:200px;
+  opacity:0.15;
+  animation: float 30s linear infinite;
+}
+
+/* Different positions */
+
+.bg1{ left:5%; animation-delay:0s; }
+.bg2{ left:25%; animation-delay:5s; }
+.bg3{ left:60%; animation-delay:10s; }
+.bg4{ left:80%; animation-delay:15s; }
+
+/* Floating animation */
+
+@keyframes float{
+  0%{
+    transform:translateY(110vh) rotate(0deg);
+  }
+  100%{
+    transform:translateY(-120vh) rotate(360deg);
+  }
+}
+
+/* ===== CONTENT ===== */
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
 
 /* HEADER */
-header{display:flex;align-items:center;gap:14px}
-.logo{width:64px;height:64px;border-radius:10px;overflow:hidden}
-.logo img{width:100%;height:100%;object-fit:contain}
-nav{margin-left:auto;display:flex;gap:10px}
-nav button{background:none;border:0;color:var(--text);cursor:pointer;font-weight:600}
+
+header{
+  display:flex;
+  align-items:center;
+}
+
+.logo{
+  width:60px;
+}
+
+nav{
+  margin-left:auto;
+}
+
+nav a{
+  margin:0 15px;
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
 
 /* HERO */
-.hero{display:flex;gap:18px;margin-top:18px;align-items:center}
-.hero-desc{color:var(--muted);margin-top:8px}
-.btn{padding:10px 16px;border-radius:10px;border:2px solid var(--accent);background:transparent;color:var(--text);font-weight:700;text-decoration:none}
-.btn.primary{background:var(--accent);color:#012}
 
-/* CARDS */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:20px}
-.card{background:var(--card);padding:12px;border-radius:12px;box-shadow:var(--shadow)}
-.card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
+.hero{
+  margin-top:40px;
+}
+
+.btn{
+  padding:12px 20px;
+  border-radius:10px;
+  border:2px solid cyan;
+  color:white;
+  text-decoration:none;
+  margin-right:10px;
+}
+
+.btn.primary{
+  background:cyan;
+  color:black;
+}
 
 /* FOOTER */
-footer{text-align:center;color:var(--muted);margin-top:28px}
 
-/* ANIMATION */
-.anim-area{position:fixed;left:0;right:0;top:0;height:220px;pointer-events:none;z-index:0}
-.flying{position:absolute;opacity:.8}
-
-@keyframes floatA{
-  0%{transform:translate(-10vw,20vh)}
-  100%{transform:translate(110vw,60vh)}
+footer{
+  text-align:center;
+  margin-top:40px;
+  color:gray;
 }
 
-@media(max-width:700px){
-  .hero{flex-direction:column}
-  .anim-area{opacity:.35}
-}
 </style>
 </head>
 
 <body>
 
-<!-- ANIMATION -->
-<div class="anim-area">
-  <div class="flying" style="left:-10vw;top:20vh;animation:floatA 18s linear infinite">
-    <svg width="60" height="30"><rect width="60" height="30" rx="5" fill="#00bcd4"/></svg>
-  </div>
+<!-- ===== FLOATING ARDUINO SVG ===== -->
+
+<div class="bg-animation">
+
+<img src="assets/arduino1.svg" class="bg1">
+<img src="assets/arduino2.svg" class="bg2">
+<img src="assets/arduino3.svg" class="bg3">
+<img src="assets/arduino4.svg" class="bg4">
+
 </div>
 
-<div class="wrap" style="position:relative;z-index:2">
+<!-- ===== WEBSITE CONTENT ===== -->
+
+<div class="container">
 
 <header>
-  <div class="logo">
-    <img src="assets/logo.png" alt="Circuit Creation RN">
-  </div>
-  <h1 style="font-family:Orbitron">Circuit Creation RN</h1>
-  <nav>
-    <button>Home</button>
-    <button>Projects</button>
-    <button>About</button>
-  </nav>
+
+<img src="assets/logo.png" class="logo">
+
+<h2 style="margin-left:10px;font-family:Orbitron">Circuit Creation RN</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Projects</a>
+<a href="#">About</a>
+</nav>
+
 </header>
 
 <section class="hero">
-  <div>
-    <div class="hero-desc">
-      Official website of Circuit Creation RN — Arduino & electronics projects ⚡
-    </div>
-    <div style="margin-top:12px">
-      <a class="btn primary">Explore Projects</a>
-      <a class="btn">Learn More</a>
-    </div>
-  </div>
 
-  <img src="assets/logo.png" style="width:200px;border-radius:12px;box-shadow:var(--shadow)">
+<h1>Welcome to Circuit Creation RN ⚡</h1>
+
+<p>
+Arduino • Electronics • Innovation Projects
+</p>
+
+<a href="#" class="btn primary">Explore Projects</a>
+<a href="#" class="btn">Learn More</a>
+
 </section>
 
 <footer>
-  © 2025 Circuit Creation RN
+© Circuit Creation RN
 </footer>
 
 </div>
 
 </body>
-</html>       
+</html>
