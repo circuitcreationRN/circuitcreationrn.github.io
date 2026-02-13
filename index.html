@@ -231,5 +231,22 @@ Arduino • Electronics • Innovation Projects
 
 </div>
 
+
+
+ <script>
+
+const faders = document.querySelectorAll(".fade");
+
+window.addEventListener("scroll", () => {
+  faders.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100){
+      el.classList.add("show");
+    }
+  });
+});
+
+ </script>
+
 </body>
 </html>
