@@ -211,6 +211,25 @@ footer{
 
 <body>
 
+ <div id="loader">
+<h2>Loading Circuit Creation RN...</h2>
+ </div>
+
+
+
+ /* ==== LOADER ===== */
+
+#loader{
+ position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
 <!-- ===== FLOATING ARDUINO SVG ===== -->
 
 <div class="bg-animation">
@@ -276,5 +295,10 @@ window.addEventListener("scroll", () => {
 
  </script>
 
+ window.addEventListener("load", () => {
+  document.getElementById("loader").style.display = "none";
+});
+
+ 
 </body>
 </html>
