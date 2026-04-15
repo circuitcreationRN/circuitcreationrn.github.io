@@ -19,7 +19,7 @@ body{
 .bg-animation img{
   position:absolute;
   width:180px;
-  opacity:420;
+  opacity:0.6;
   animation: float 25s linear infinite;
 }
 
