@@ -144,3 +144,13 @@ nav a:hover{
     margin-top:10px;
   }
 }
+
+
+.socials a svg{
+  transition:0.3s;
+}
+
+.socials a:hover svg{
+  transform:scale(1.2);
+  filter: drop-shadow(0 0 10px cyan);
+}
