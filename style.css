@@ -156,14 +156,26 @@ nav a:hover{
 }
 
 
+
+
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  max-width: 60%; /* prevent overflow */
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
 }
 
 .logo-text {
-  font-size: 18px;
+  font-family: 'Orbitron', sans-serif; /* tech font 🔥 */
+  font-size: 22px;
   font-weight: 600;
-  color: white; /* change if needed */
+  color: white;
+  white-space: nowrap; /* keep in one line */
+  overflow: hidden;
+  text-overflow: ellipsis; /* ... if too long */
 }
