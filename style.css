@@ -20,6 +20,7 @@ body{
   position:absolute;
   width:180px;
   opacity:10;
+  filter: brightness(1.1);
   animation: float 25s linear infinite;
 }
 
