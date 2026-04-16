@@ -179,3 +179,10 @@ nav a:hover{
   overflow: hidden;
   text-overflow: ellipsis; /* ... if too long */
 }
+
+
+.card{
+  text-decoration:none;
+  color:white;
+  display:block;
+}
