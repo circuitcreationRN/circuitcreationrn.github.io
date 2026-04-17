@@ -232,3 +232,34 @@ nav a:hover{
   width:100%;
   border-radius:10px;
 }
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 40px; /* 👈 controls size */
+}
+
+/* logo alignment */
+.logo-container{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo{
+  width:60px;
+}
+
+.logo-text{
+  font-family:Orbitron;
+  font-size:18px;
+}
+
+/* nav spacing */
+nav a{
+  margin-left:20px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+}
