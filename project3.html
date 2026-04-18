@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Analog Reading Project Using Arduino UNO</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+<img src="assets/logo.png" class="logo">
+
+<nav>
+<a href="index.html">Home</a>
+<a href="projects.html">Projects</a>
+<a href="about.html">About</a>
+</nav>
+</header>
+
+<h1>Analog Reading Project</h1>
+
+<!-- COMPONENTS -->
+<h2>Components Required</h2>
+<ul>
+<li>Arduino Uno</li>
+<li>Potentionmeter</li>
+<li>Breadboard</li>
+<li>Jumper Wires</li>
+</ul>
+
+<!-- DESCRIPTION -->
+<h2>Description</h2>
+<p>
+This project makes an Analog reading project using Arduino.
+It is the basic project for beginners.
+</p>
+
+
+
+<!-- CODE -->
+<h2>Arduino Code</h2>
+
+<div class="code-box">
+
+<button onclick="copyCode()">Copy</button>
+
+<pre id="code">
+/*
+   Led blinking project 
+
+   Components:
+     - Arduino UNO 
+     - Potentionmeter 
+     - Breadboard 
+     - Jumber wire
+     Author: Circuit Creation RN
+
+*/
+ 
+#define pin A0
+
+float read_value;
+float voltage;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(pin, INPUT);
+}
+
+void loop() {
+  read_value = analogRead(pin);
+  voltage = (read_value * 5.0) / 1023.0;
+  Serial.println(voltage);
+  delay(1000);
+}
+</pre>
+
+</div>
+
+<!-- CIRCUIT -->
+<h2>Circuit Diagram</h2>
+
+<img src="assets/ledblink.PNG" style="width:100%;border-radius:10px">
+
+<br><br>
+
+<a href="assets/ledblink.PNG" download class="btn">
+Download Diagram
+</a>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
