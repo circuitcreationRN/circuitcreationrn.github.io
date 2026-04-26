@@ -302,3 +302,7 @@ nav a{
   color:cyan;
   font-family:Orbitron;
 }
+
+#loader{
+  transition: opacity 0.5s ease;
+}
