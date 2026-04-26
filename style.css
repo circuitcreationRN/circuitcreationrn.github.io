@@ -263,3 +263,8 @@ nav a{
   color:white;
   font-weight:600;
 }
+
+.highlight{
+  color:cyan;
+  text-shadow:0 0 10px cyan;
+}
