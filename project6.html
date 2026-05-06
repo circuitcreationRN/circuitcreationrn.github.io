@@ -60,6 +60,57 @@ Watch on YouTube
 
 
 
+
+   <!-- CODE -->
+<h2>Arduino Code</h2>
+
+<div class="code-box">
+
+<button onclick="copyCode()">Copy</button>
+
+<pre id="code">
+
+   
+/*
+    Project: LCD Display Project using Arduino
+    description: Learn how to interface a 16x2 LCD display with an Arduino Uno.
+
+   Components:
+     -  Arduino Uno
+     -  16x2 LCD Display
+     -  10kΩ Potentiometer
+     -  220Ω Resistor
+     -  Breadboard and Jumper Wires
+     -  USB Cable 
+   Author: Circuit Creation RN
+
+*/
+
+// This code will display "Hello World" on the LCD screen when the Arduino is powered on.
+
+// Include the LiquidCrystal library
+#include <LiquidCrystal.h>
+
+// Initialize the library with LCD pin numbers
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+  // Set up the LCD's number of columns and rows
+  lcd.begin(16, 2);
+  
+  // Print "Hello World" on the first row
+  lcd.print("Hello World");
+}
+
+void loop() {
+  // Nothing to do, just display the message
+}
+                
+</pre>
+
+</div>
+   
+
 <!-- CIRCUIT -->
 <h2>Circuit Diagram</h2>
 
