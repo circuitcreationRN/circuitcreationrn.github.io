@@ -306,3 +306,20 @@ nav a{
     }
 }
 
+body{
+    background: white;
+    color: black;
+    transition: 0.5s;
+}
+
+.dark-mode{
+    background: #0a0a0a;
+    color: white;
+}
+
+#darkBtn{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
