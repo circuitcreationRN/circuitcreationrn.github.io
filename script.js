@@ -15,13 +15,7 @@ window.addEventListener("load", function(){
 
 });
 
-const darkBtn = document.getElementById("darkBtn");
 
-darkBtn.onclick = function(){
-
-    document.body.classList.toggle("dark-mode");
-
-}
 
 
 const text = "Welcome To Circuit Creation RN Official Website";
