@@ -339,3 +339,17 @@ nav a{
     box-shadow:0 0 20px cyan;
     z-index:999;
 }
+
+/* CURSOR GLOW */
+
+.cursor-glow{
+    width:25px;
+    height:25px;
+    background:cyan;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 25px cyan;
+    z-index:9999;
+}
