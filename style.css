@@ -323,3 +323,19 @@ nav a{
     border-radius:20px;
     box-shadow:0 0 20px cyan;
 }
+
+/* AI CHAT */
+
+.ai-chat{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:cyan;
+    color:black;
+    padding:15px 20px;
+    border-radius:50px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 20px cyan;
+    z-index:999;
+}
