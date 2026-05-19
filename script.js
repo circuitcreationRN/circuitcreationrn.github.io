@@ -1,79 +1,70 @@
-function copyCode(){
-  let code = document.getElementById("code").innerText;
-  navigator.clipboard.writeText(code);
-  alert("Code copied!");
-}
+// ============================
+// LOADER FIX
+// ============================
 
+window.onload = function(){
 
-window.addEventListener("load", function(){
+    const loader =
+    document.getElementById("loader");
 
-    setTimeout(function(){
+    if(loader){
 
-        document.getElementById("loader").style.display = "none";
+        setTimeout(() => {
 
-    }, 700);
+            loader.style.opacity = "0";
 
-});
+            setTimeout(() => {
 
+                loader.style.display = "none";
 
+            },500);
 
-
-const text = "Welcome To Circuit Creation RN Official Website";
-
-let i = 0;
-
-function typing(){
-
-    if(i < text.length){
-
-        document.querySelector(".typing").innerHTML += text.charAt(i);
-
-        i++;
-
-        setTimeout(typing,100);
-    }
-
-}
-
-typing();
-
-const glow = document.querySelector(".cursor-glow");
-
-document.addEventListener("mousemove",(e)=>{
-
-    glow.style.left = e.pageX + "px";
-
-    glow.style.top = e.pageY + "px";
-
-});
-
-
-// TYPING AI ANIMATION
-
-const text =
-"⚡ Welcome to Circuit AI Assistant. Ask about components, Arduino code, or electronics projects.";
-
-let i = 0;
-
-function typingAnimation(){
-
-    if(i < text.length){
-
-        document.getElementById("typing-text").innerHTML += text.charAt(i);
-
-        i++;
-
-        setTimeout(typingAnimation,50);
+        },500);
 
     }
 
+};
+
+
+
+// ============================
+// TYPING ANIMATION
+// ============================
+
+const typingElement =
+document.getElementById("typing-text");
+
+if(typingElement){
+
+    const text =
+    "⚡ Welcome to Circuit AI Assistant. Ask about components, Arduino code, or electronics projects.";
+
+    let i = 0;
+
+    function typingAnimation(){
+
+        if(i < text.length){
+
+            typingElement.innerHTML +=
+            text.charAt(i);
+
+            i++;
+
+            setTimeout(typingAnimation,50);
+
+        }
+
+    }
+
+    typingAnimation();
+
 }
 
-typingAnimation();
 
 
-
+// ============================
 // AI RESPONSE SYSTEM
+// ============================
 
 function generateResponse(){
 
@@ -85,18 +76,12 @@ function generateResponse(){
 
 
 
-    // BC547
-
     if(input.includes("bc547")){
 
         answerBox.innerHTML =
-        "🔧 BC547 is an NPN transistor used for switching and amplification. Common projects: touch alarm, amplifier, LED flasher.";
+        "🔧 BC547 is an NPN transistor used for switching and amplification.";
 
     }
-
-
-
-    // LED BLINK
 
     else if(input.includes("blink led")){
 
@@ -123,36 +108,24 @@ delay(1000);
 
     }
 
-
-
-    // HC05
-
     else if(input.includes("hc05")){
 
         answerBox.innerHTML =
-        "📡 HC-05 is a Bluetooth module used for wireless Arduino communication.";
+        "📡 HC-05 is a Bluetooth module used for wireless communication.";
 
     }
-
-
-
-    // PROJECT IDEAS
 
     else if(input.includes("project")){
 
         answerBox.innerHTML =
-        "🚀 Project Ideas: Home automation, robot car, water detector, line follower robot.";
+        "🚀 Try robot car, home automation, water detector, or line follower.";
 
     }
-
-
-
-    // DEFAULT
 
     else{
 
         answerBox.innerHTML =
-        "🤖 Sorry, I am still learning. Try searching electronics components or Arduino code.";
+        "🤖 Sorry, I am still learning.";
 
     }
 
@@ -160,31 +133,43 @@ delay(1000);
 
 
 
-// VOICE ASSISTANT
+// ============================
+// SAFE VOICE ASSISTANT
+// ============================
 
 function startVoice(){
 
-    const recognition =
-    new webkitSpeechRecognition();
+    if('webkitSpeechRecognition' in window){
 
-    recognition.lang = "en-US";
+        const recognition =
+        new webkitSpeechRecognition();
 
-
-
-    recognition.onresult = function(event){
-
-        const voiceText =
-        event.results[0][0].transcript;
-
-        document.getElementById("userInput").value =
-        voiceText;
-
-        generateResponse();
-
-    };
+        recognition.lang = "en-US";
 
 
 
-    recognition.start();
+        recognition.onresult = function(event){
+
+            const voiceText =
+            event.results[0][0].transcript;
+
+            document.getElementById("userInput").value =
+            voiceText;
+
+            generateResponse();
+
+        };
+
+
+
+        recognition.start();
+
+    }
+
+    else{
+
+        alert("Voice recognition not supported on this browser.");
+
+    }
 
 }
