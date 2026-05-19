@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Circuit AI Assistant</title>
+
+<link rel="stylesheet" href="style.css">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<!-- BACKGROUND GLOW -->
+
+<div class="bg-glow"></div>
+
+<!-- AI PAGE -->
+
+<div class="ai-container">
+
+<h1 class="ai-title">
+🤖 Circuit AI Assistant
+</h1>
+
+<p class="ai-subtitle">
+Future Electronics Support System
+</p>
+
+<!-- TYPING ANIMATION -->
+
+<div class="typing-box">
+
+<p id="typing-text"></p>
+
+</div>
+
+<!-- SEARCH BOX -->
+
+<div class="search-section">
+
+<input type="text"
+id="userInput"
+placeholder="Search components or Arduino code...">
+
+<button onclick="generateResponse()">
+
+Generate
+
+</button>
+
+<button onclick="startVoice()">
+
+🎤 Voice
+
+</button>
+
+</div>
+
+<!-- ANSWER BOX -->
+
+<div id="answerBox">
+
+AI Response appears here...
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
