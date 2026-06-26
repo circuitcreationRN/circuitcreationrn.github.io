@@ -583,3 +583,24 @@ nav a:hover{
     }
 
 }
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    display:flex;
+    flex-direction:column;
+    height:100%;
+}
+
+.card img{
+    width:100%;
+    border-radius:15px;
+}
+
+.card p{
+    flex:1;
+}
