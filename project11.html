@@ -129,6 +129,133 @@ Download Diagram
 
 </section>
 
+
+  <!-- STEP BY STEP CONNECTION -->
+
+<section class="card">
+
+<h2>Circuit Connections</h2>
+
+<h3>Step 1 – Power Connections</h3>
+
+<p>
+<b>NE555</b><br>
+Pin 1 → GND<br>
+Pin 8 → +VCC<br>
+Pin 4 → +VCC
+</p>
+
+<p>
+<b>CD4017</b><br>
+Pin 16 → +VCC<br>
+Pin 8 → GND<br>
+Pin 13 → GND
+</p>
+
+<hr>
+
+<h3>Step 2 – Connect Pins 2 and 6</h3>
+
+<p>
+Connect NE555 Pin 2 directly to Pin 6.
+</p>
+
+<hr>
+
+<h3>Step 3 – Timing Capacitor</h3>
+
+<p>
+10µF Capacitor<br>
+Positive → Pins 2 & 6<br>
+Negative → GND
+</p>
+
+<hr>
+
+<h3>Step 4 – Timing Resistors</h3>
+
+<p>
+10kΩ Resistor<br>
+Pin 7 → Pins 2 & 6
+</p>
+
+<p>
+100kΩ Resistor<br>
++VCC → Pin 7
+</p>
+
+<hr>
+
+<h3>Step 5 – Control Capacitor</h3>
+
+<p>
+103 (0.01µF) Capacitor<br>
+Pin 5 → GND
+</p>
+
+<hr>
+
+<h3>Step 6 – Clock Connection</h3>
+
+<p>
+NE555 Pin 3 → CD4017 Pin 14 (Clock)
+</p>
+
+<hr>
+
+<h3>Step 7 – Reset Connection</h3>
+
+<p>
+CD4017 Pin 5 (Q6) → Pin 15 (RESET)
+</p>
+
+<p>
+This limits counting to six outputs.
+</p>
+
+<hr>
+
+<h3>Step 8 – LED Connections</h3>
+
+<ul>
+
+<li>Pin 3 (Q0) → LED 1</li>
+
+<li>Pin 2 (Q1) → LED 2</li>
+
+<li>Pin 4 (Q2) → LED 3</li>
+
+<li>Pin 7 (Q3) → LED 4</li>
+
+<li>Pin 10 (Q4) → LED 5</li>
+
+<li>Pin 1 (Q5) → LED 6</li>
+
+</ul>
+
+<p>
+Use one 470Ω resistor in series with each LED. Connect all LED negative terminals to GND.
+</p>
+
+<hr>
+
+<h3>Step 9 – Push Button</h3>
+
+<p>
+One terminal → +VCC<br>
+Other terminal → NE555 Pin 4 (RESET)
+</p>
+
+<hr>
+
+<h3>Step 10 – Additional Resistor</h3>
+
+<p>
+Connect another 10kΩ resistor from NE555 Pin 4 (RESET) to GND.
+</p>
+
+</section>
+
 <!-- CIRCUIT EXPLANATION -->
 
 <section class="card">
