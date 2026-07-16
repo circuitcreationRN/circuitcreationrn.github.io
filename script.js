@@ -68,6 +68,20 @@ window.addEventListener("load", function () {
 
         }, 500);
 
+        
     }
 
 });
+
+
+<script>
+function copyCode() {
+
+  const code = document.getElementById("arduinoCode").innerText;
+
+  navigator.clipboard.writeText(code).then(function () {
+    alert("Code copied successfully!");
+  });
+
+}
+</script>
