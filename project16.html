@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Arduino UNO Distance Measurement Using Ultrasonic Sensor</title>
+  
+<link rel="stylesheet" href="style.css">
+
+<!-- SEO -->
+<meta name="description"
+content="Arduino UNO Ultrasonic sensor project by Circuit Creation RN. Learn how to upload Arduino code using the Arduinodroid app and an OTG cable without a laptop or PC.">
+<!-- MAIN IMAGE -->
+<meta property="og:image"
+content="https://circuitcreationrn.github.io/assets/logo.png">
+
+<!-- FAVICON -->
+<link rel="icon"
+href="assets/logo.png"
+type="image/png">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+<div class="logo-container">
+
+<img src="assets/logo.png" class="logo">
+
+<span class="logo-text">Circuit Creation RN</span>
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="projects.html">Projects</a>
+
+<a href="about.html">About</a>
+
+</nav>
+
+</header>
+
+<!-- MAIN CONTAINER -->
+
+<div class="container">
+
+<!-- PROJECT TITLE -->
+
+<h1 class="project-title">
+Arduino UNO Distance Measurement Using Ultrasonic Sensor 
+</h1>
+<!-- DESCRIPTION -->
+
+<section class="card">
+
+<h2>Description</h2>
+
+<p>
+This beginner friendly Arduino project demonstrates how to measure distance using an HC-SR04 Ultrasonic Sensor with an Arduino UNO. The sensor calculates the distance to nearby objects and displays the values on the Serial Monitor.
+</p>
+
+</section>
+<!-- COMPONENTS -->
+
+<section class="card">
+
+<h2>Components Required</h2>
+
+<ul>
+
+<li>Arduino UNO R3</li>
+
+<li>HC-SR04 Ultrasonic Sensor</li>
+
+<li>Arduino USB Cable</li>
+
+<li>OTG Cable</li>
+
+<li>Android Phone</li>
+
+<li>Arduinodroid App</li>
+
+<li>Jumper Wires</li>
+
+</ul>
+  
+</section>
+<!-- CIRCUIT DIAGRAM -->
+
+<section class="card">
+
+<h2>Circuit Diagram</h2>
+
+<img src="assets/ultrasonic.jpg"
+class="project-image">
+
+<br><br>
+
+<a href="assets/ultrasonic.jpg"
+download
+class="btn">
+
+Download Diagram
+
+</a>
+
+</section>
+
+
+<!-- STEP BY STEP CONNECTION -->
+
+<section class="card">
+
+<h2>Circuit Connections</h2>
+
+<h3>Step 1 – Connect VCC</h3>
+
+<p>
+Connect the VCC pin of the HC-SR04 sensor to the 5V pin of the Arduino UNO.
+</p>
+
+<hr>
+
+<h3>Step 2 – Connect GND</h3>
+
+<p>
+Connect the GND pin of the HC-SR04 sensor to the GND pin of the Arduino UNO.
+</p>
+
+<hr>
+
+<h3>Step 3 – Connect TRIG</h3>
+
+<p>
+Connect the TRIG pin of the sensor to Digital Pin 9 of the Arduino UNO.
+</p>
+
+<hr>
+
+<h3>Step 4 – Connect ECHO</h3>
+
+<p>
+Connect the ECHO pin of the sensor to Digital Pin 10 of the Arduino UNO.
+</p>
+
+<hr>
+
+<h3>Step 5 – Upload the Code</h3>
+
+<p>
+Open the Arduinodroid app, paste the ultrasonic sensor code, Compile the code, and upload the program.
+</p>
+
+</section>
+
+<!-- CIRCUIT EXPLANATION -->
+
+<section class="card">
+
+<h2>Circuit Explanation</h2>
+
+<p>
+The HC-SR04 sensor sends ultrasonic sound waves through the TRIG pin. When the waves hit an object, they bounce back to the sensor and are received by the ECHO pin.
+</p>
+
+<p>
+The Arduino measures the travel time of the sound waves and calculates the distance, then displays the result on the Serial Monitor.
+</p>
+
+</section>
+
+  <!-- codes -->
+
+  <section class="card">
+
+<h2>Code</h2>
+
+<button class="btn" onclick="copyCode()">
+📋 Copy Code
+</button>
+
+<br><br>
+
+<pre><code id="arduinoCode">
+/*
+ Arduino LED Blink with Mobile Phone
+
+ Components:
+ - Arduino UNO R3
+ - Ultrasonic sensor 
+ - Arduino Cable
+ - Jumper wires 
+ - OTG Cable
+
+ Author: Circuit Creation RN
+*/
+
+const int trigPin = 9;
+const int echoPin = 10;
+
+long duration;
+float distance;
+
+void setup() {
+
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+
+  Serial.begin(9600);
+
+}
+
+void loop() {
+
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+
+  digitalWrite(trigPin, LOW);
+
+  duration = pulseIn(echoPin, HIGH);
+
+  distance = duration * 0.0343 / 2;
+
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+
+  delay(500);
+
+}
+</code></pre>
+
+  </section>
+
+<!-- code EXPLANATION -->
+  
+<section class="card">
+
+<h2>Code Explanation</h2>
+
+<p>
+The Arduino triggers the ultrasonic sensor by sending a short pulse to the TRIG pin. It measures the duration of the returning echo pulse and converts this time into distance using the speed of sound. The calculated distance is continuously displayed on the Serial Monitor.
+</p>
+
+</section>
+
+
+  
+ <section class="card">
+
+<h2>Download Arduinodroid App</h2>
+
+<p>
+You can write, compile, and upload Arduino sketches directly from your Android phone using the Arduinodroid app with an OTG cable no laptop or PC required.
+</p>
+
+<a href="https://play.google.com/store/apps/details?id=name.antonsmirnov.android.arduinodroid2"
+target="_blank"
+class="btn primary">
+
+Download from Google Play
+
+</a>
+
+ </section> 
+<!-- PROJECT WORKING -->
+
+<section class="card">
+
+<h2>Project Working</h2>
+
+<p>
+After uploading the program, the HC-SR04 sensor continuously measures the distance to nearby objects. The Arduino calculates the distance and displays the measured value in centimeters on the Serial Monitor in real time.
+</p>
+
+</section>
+
+<!-- LEARNING OUTCOME -->
+
+<section class="card">
+
+<h2>Learning Outcome</h2>
+
+
+
+<ul>
+
+<li>Understand ultrasonic distance measurement.</li>
+
+<li>Learn HC-SR04 sensor interfacing.</li>
+
+<li>Read sensor data using Arduino.</li>
+
+<li>Display live distance on the Serial Monitor.</li>
+
+</ul>
+</section>
+
+<!-- COMMON MISTAKES -->
+
+<section class="card">
+
+<h2>Common Mistakes</h2>
+
+<ul>
+
+<li>TRIG and ECHO pins connected incorrectly.</li>
+
+<li>Wrong pin numbers in the code.</li>
+
+<li>Loose jumper wire connections.</li>
+
+<li>Incorrect baud rate in the Serial Monitor.</li>
+
+<li>Insufficient power supply.</li>
+
+</ul>
+
+</section>
+
+
+<!-- FAQ SECTION -->
+
+<section class="card">
+
+<h2>FAQ</h2>
+
+<h3>Why does the Serial Monitor show random values?</h3>
+
+<p>
+Check the wiring, ensure the sensor faces an object, and verify the baud rate matches the code.
+</p>
+
+<h3>What is the measuring range of the HC-SR04?</h3>
+
+<p>
+The HC-SR04 can typically measure distances from about 2 cm to 400 cm.
+</p>
+
+<h3>Can I power the sensor from the Arduino?</h3>
+
+<p>
+Yes. The HC-SR04 works directly with the Arduino UNO's 5V and GND pins.
+</p>
+</section>
+
+<!-- WATCH VIDEO -->
+
+<section class="card">
+
+<h2>Watch Video</h2>
+
+<a href="https://youtube.com/shorts/oxBKf57DfH4?si=PU2bW9uFEcHKt-z9"
+target="_blank"
+class="btn primary">
+
+Watch on YouTube
+
+</a>
+
+  <a href="https://www.instagram.com/reel/Da0PTGDzbbh/?igsh=MXV1cWJqN2pmaTRvOA=="
+target="_blank"
+class="btn primary">
+
+Watch on Instagram 
+
+  </a>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
+
